@@ -7,6 +7,8 @@ import { Chat } from "./Chat";
 import { useAddress, useDisconnect, useLogout } from "@thirdweb-dev/react";
 import { BiLogOut } from "react-icons/bi";
 import { useSelector } from "react-redux";
+import { useEffect } from "react";
+import usePush from "../../hooks/usePush";
 
 const Index = () => {
   const wallet_address = useAddress() ?? "";
@@ -15,6 +17,14 @@ const Index = () => {
   const disconnect = useDisconnect();
 
   const chat = useSelector((state: any) => state?.chat);
+
+  const { attendToGroup } = usePush();
+
+  useEffect(() => {
+    if (chat?.id) {
+      attendToGroup(chat?.id);
+    }
+  }, [chat]);
 
   const shortenedAddress = `${wallet_address?.substring(
     0,

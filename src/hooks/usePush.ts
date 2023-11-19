@@ -1,5 +1,5 @@
 import { PushAPI, CONSTANTS } from "@pushprotocol/restapi";
-import { useAddress, useSigner } from "@thirdweb-dev/react";
+import { useAddress, useSigner, useWallet } from "@thirdweb-dev/react";
 import { ethers, Signer } from "ethers";
 import { setAccount } from "../redux/accountSlice";
 import { useDispatch, useSelector } from "react-redux";
@@ -32,8 +32,9 @@ const getNftsForOwnerOnNetwork = async (alchemy, ownerAddress) => {
 };
 
 const usePush = () => {
+  const account = useSelector((state: any) => state.account?.account);
+
   const signer = useSigner();
-  const account = useSelector((state: any) => state.account);
 
   const dispatch = useDispatch();
 
@@ -92,23 +93,43 @@ const usePush = () => {
     return user;
   };
   const createStream = async (onMessage) => {
-    console.log(account);
     try {
-      const user = account;
-      const stream = await user.initStream([CONSTANTS.STREAM.CHAT]);
+      const stream = await account.initStream([CONSTANTS.STREAM.CHAT]);
       // Configure stream listen events and what to do
 
       stream.on(CONSTANTS.STREAM.CHAT, (message) => {
         onMessage(message);
       });
-      // Connect Stream
+
+      stream.on(CONSTANTS.STREAM.DISCONNECT, () => {});
       stream.connect();
       return stream;
     } catch (err) {
       console.log(err);
     }
   };
-  return { initialize, createStream, getNftOfUser };
+
+  const attendToGroup = async (chatId) => {
+    await account.chat.group.join(chatId);
+  };
+
+  const sendMessage = async (receiver, content) => {
+    await account.chat.send(receiver, { content });
+  };
+
+  const getChatHistory = async (chatId) => {
+    const history = await account.chat.history(chatId);
+    return history;
+  };
+
+  return {
+    initialize,
+    createStream,
+    getNftOfUser,
+    getChatHistory,
+    sendMessage,
+    attendToGroup,
+  };
 };
 
 export default usePush;

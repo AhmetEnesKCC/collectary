@@ -5,4 +5,5 @@ export type MessageBoxType = {
   time: string;
   message: string;
   type: "sender" | "receiver";
+  is_me: boolean;
 };

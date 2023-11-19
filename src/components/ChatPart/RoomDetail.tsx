@@ -29,6 +29,7 @@ export const RoomDetail = () => {
       <div className="w-16 h-16 rounded-full border-white border-[1px] flex justify-center items-center">
         <SvgRender svg={Teams} title="team" />
       </div>
+      <p className="mt-4">Holders</p>
       <div className="flex flex-col w-full gap-y-5 mt-8 max-h-[70vh] overflow-auto">
         {chat?.data?.groupInformation?.members?.map((user: RoomUserType) => (
           <ProfilePopup user={user} />

@@ -4,13 +4,15 @@ import SvgRender from "../Common/SvgRender";
 import AttachSvg from "../../assets/svg/attach.svg";
 import SendSvg from "../../assets/svg/send.svg";
 
-export const SendMessage = () => {
+export const SendMessage = ({ onSend }) => {
   const [message, setMessage] = useState<string>("");
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    alert(message);
+    onSend(message);
+    setMessage("");
   };
+
   return (
     <form onSubmit={handleSubmit}>
       <label className="relative w-full mt-5 flex ">

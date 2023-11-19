@@ -10,15 +10,13 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { ThirdwebProvider } from "@thirdweb-dev/react";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ThirdwebProvider>
-        <ChakraProvider>
-          <Layout>
-            <RouterProvider router={routes} />
-          </Layout>
-        </ChakraProvider>
-      </ThirdwebProvider>
-    </Provider>
-  </React.StrictMode>
+  <Provider store={store}>
+    <ThirdwebProvider>
+      <ChakraProvider>
+        <Layout>
+          <RouterProvider router={routes} />
+        </Layout>
+      </ChakraProvider>
+    </ThirdwebProvider>
+  </Provider>
 );

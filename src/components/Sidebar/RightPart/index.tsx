@@ -15,6 +15,7 @@ const Index = () => {
   const getRooms = async () => {
     const userAdmin = await initialize(admin);
     const rooms = await fetchAllChats(userAdmin);
+    console.log(rooms);
     setData(rooms);
   };
 
