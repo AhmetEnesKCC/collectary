@@ -4,7 +4,7 @@ const useRooms = createSlice({
   initialState: [],
   name: "rooms",
   reducers: {
-    setRooms: (state, action) => {
+    setRooms: (_, action) => {
       return action.payload;
     },
   },

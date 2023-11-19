@@ -4,7 +4,7 @@ const chatSlice = createSlice({
   initialState: null,
   name: "chat",
   reducers: {
-    setChat: (state, action) => {
+    setChat: (_, action) => {
       return action.payload;
     },
   },

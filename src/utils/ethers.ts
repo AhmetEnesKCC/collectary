@@ -36,7 +36,6 @@ class EthersService {
   public allowlistDestinationChain = async (
     destinationChainSelector: number,
     allowed: boolean,
-    user_address,
     onError: () => void
   ) => {
     const poolContract = await this.createCCIPContract();
