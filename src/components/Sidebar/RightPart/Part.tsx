@@ -2,8 +2,6 @@ import { FC } from "react";
 
 import { useSelector, useDispatch } from "react-redux";
 
-import { setTab } from "../../../redux/tabSlice";
-import { RootState } from "../../../redux/store";
 import { setChat } from "../../../redux/chatSlice";
 
 interface PartProps {
