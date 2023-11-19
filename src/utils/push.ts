@@ -1,5 +1,6 @@
 // Import Push SDK & Ethers
 import { PushAPI, CONSTANTS } from "@pushprotocol/restapi";
+import { ethers } from "ethers";
 
 export const initialize = async (signer) => {
   // Initialize wallet user
@@ -10,6 +11,15 @@ export const initialize = async (signer) => {
 
   return user;
 };
+
+// const onFirstConnect = async () => {
+//   /*
+//         initialize user
+//         loop through nfts
+//         chatler içinde o nft için olan varsa dahil et bitir
+//         yoksa o koleksiyon için grup oluştur
+//     */
+// };
 
 // const sendMessage = async (user, reciever, content) => {
 //   const stream = await user.initStream([CONSTANTS.STREAM.CHAT]);
@@ -24,11 +34,11 @@ export const initialize = async (signer) => {
 //   console.log("123", aliceMessagesBob);
 // };
 
-// export const fetchAllChats = async (user) => {
-//   const chats = await user.chat.list("CHATS");
+export const fetchAllChats = async (user) => {
+  const chats = await user.chat.list("CHATS");
 
-//   return chats;
-// };
+  return chats;
+};
 
 // const attendToGroup = async (user, groupChatId) => {
 //   const joinGroup = await user.chat.group.join(groupChatId);
@@ -128,9 +138,9 @@ export const initialize = async (signer) => {
 // const bob = ethers.Wallet.createRandom();
 // console.log("bob pkey", bob.privateKey);
 
-// export const admin = new ethers.Wallet(
-//   "0x0347f649a550b01f74b24d708ee56d5800887b15bf81206f3149ffb0da79145b"
-// );
+export const admin = new ethers.Wallet(
+  "0x0347f649a550b01f74b24d708ee56d5800887b15bf81206f3149ffb0da79145b"
+);
 // const alice = new ethers.Wallet(
 //   "0xafdf74eb8c1cc91ea96f2ad21a988927b09bd9bef2afef4a514955c6004ad342"
 // );
