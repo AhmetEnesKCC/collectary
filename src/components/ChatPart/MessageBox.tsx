@@ -1,7 +1,6 @@
 import { FC } from "react";
 
 import { MessageBoxType } from "../../types/message.d";
-import SvgRender from "../Common/SvgRender";
 
 import UserSvg from "../../assets/svg/user.svg";
 

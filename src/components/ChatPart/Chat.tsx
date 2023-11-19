@@ -1,5 +1,4 @@
 import { useDispatch, useSelector } from "react-redux";
-import { MessageBoxType } from "../../types/message.d";
 import { MessageBox } from "./MessageBox";
 import { RoomDetail } from "./RoomDetail";
 import { SendMessage } from "./SendMessage";
@@ -95,7 +94,6 @@ export const Chat = () => {
 };
 
 const NFTSendMessage = () => {
-  const address = useAddress();
   const signer = useSigner();
   const handleClick = async () => {
     const address = await signer?.getAddress();

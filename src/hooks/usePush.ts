@@ -1,11 +1,9 @@
 import { PushAPI, CONSTANTS } from "@pushprotocol/restapi";
-import { useAddress, useSigner, useWallet } from "@thirdweb-dev/react";
-import { ethers, Signer } from "ethers";
+import { useSigner } from "@thirdweb-dev/react";
 import { setAccount } from "../redux/accountSlice";
 import { useDispatch, useSelector } from "react-redux";
 
 import { Alchemy, Network } from "alchemy-sdk";
-import { setRooms } from "../redux/roomsSlice";
 
 // Ağları tanımlayın
 const networks = [

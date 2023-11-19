@@ -1,10 +1,7 @@
 import { useEffect, useState } from "react";
 
 import Search from "./Search";
-import { RoomCompType } from "../../../types/room.d";
 import Part from "./Part";
-import { useDispatch, useSelector } from "react-redux";
-import { setTab } from "../../../redux/tabSlice";
 import { admin, fetchAllChats, initialize } from "../../../utils/push";
 
 const Index = () => {
